@@ -3,6 +3,7 @@ import Row from "react-bootstrap/Row";
 import bookData from "../../history.json";
 import { Container } from "react-bootstrap";
 import SingleBook from "./SingleBook";
+import Searchbar from "../searchbar/Searchbar";
 
 const AllTheBooks = () => {
   return (
