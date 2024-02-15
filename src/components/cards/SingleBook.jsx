@@ -1,8 +1,9 @@
 import Card from "react-bootstrap/Card";
 
-const SingleBook = ({ img, title, category, price }) => {
+const SingleBook = ({ asin, img, title, category, price }) => {
   return (
     <Card>
+      <Card.Text>{asin}</Card.Text>
       <Card.Img variant="top" src={img} />
       <Card.Body>
         <Card.Title>{title}</Card.Title>
