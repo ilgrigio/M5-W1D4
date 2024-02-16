@@ -2,7 +2,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import bookData from "../../history.json";
 import { Container } from "react-bootstrap";
-import SingleBook from "./SingleBook";
+import SingleBook from "./Single.Book";
 import Searchbar from "../searchbar/Searchbar";
 import { useState } from "react";
 
@@ -12,6 +12,7 @@ const AllTheBooks = () => {
     book.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
   console.log(bookData);
+  // const [books, setBooks] = useState(bookData);
   return (
     <Container className="mt-3">
       <Searchbar
