@@ -18,7 +18,7 @@ const SingleBook = ({ asin, img, title, category, price }) => {
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Subtitle>{category}</Card.Subtitle>
-        <Card.Text>€ {price}</Card.Text>
+        <Card.Text>€ {price.toFixed(2)}</Card.Text>
       </Card.Body>
     </Card>
   );

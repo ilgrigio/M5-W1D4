@@ -1,23 +1,29 @@
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import bookData from "../../history.json";
+// import bookData from "../../history.json";
 import { Container } from "react-bootstrap";
 import SingleBook from "./Single.Book";
 import Searchbar from "../searchbar/Searchbar";
 import { useState } from "react";
 
-const AllTheBooks = () => {
+const AllTheBooks = ({ bookData }) => {
   const [searchTerm, setSearchTerm] = useState("");
+
   const filteredBooks = bookData.filter((book) =>
     book.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  console.log(bookData);
+  // console.log(bookData);
   // const [books, setBooks] = useState(bookData);
   return (
     <Container className="mt-3">
       <Searchbar
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={(e) => {
+          if (e && e.target) {
+            setSearchTerm(e.target.value);
+          }
+        }}
+        // onChange={(e) => setSearchTerm(e.target.value)}
       />
       <Row xs={1} md={4} className="g-4">
         {filteredBooks.map((book, idx) => (
