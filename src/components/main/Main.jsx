@@ -27,9 +27,8 @@ const Main = () => {
     }
   }
     fetchData();
-    console.log(data)
   }, []);
-  
+
 const handleSearch = (searchTerm) => {
   const filtered = data.filter((item) =>
   item.title.toLowerCase().includes(searchTerm.toLowerCase())
