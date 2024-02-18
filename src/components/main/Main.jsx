@@ -1,35 +1,47 @@
 import Welcome from "../welcome/Welcome";
-import Cards from "../cards/AllTheBooks";
+// import Cards from "../cards/AllTheBooks";
 import { Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import Searchbar from "../searchbar/Searchbar";
+import AllTheBooks from "../cards/AllTheBooks";
+import axios from 'axios';
 
 const Main = () => {
-  const [products, setProducts] = useState([]);
+  const [data, setData] = useState([]);
+  const[filteredData, setFilteredData] = useState([])
+
   const url = "https://epibooks.onrender.com/";
 
   useEffect(() => {
-    const getPost = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(url, {
-          method: "GET",
-        });
-        if (!response.ok) {
-          const message = "Error with Status Code: " + response.status;
-          throw new Error(message);
-        }
-        let products = await response.json();
-        setProducts(products);
-      } catch (err) {
-        console.error(err);
+        const response = await axios.get(url);
+        if (response.status === 200) {
+          setData(response.data)
+          setFilteredData(response.data)
+      } else {
+        console.error(response.status);
       }
-    };
-    getPost();
+    } catch (err) {
+      console.error('Error fetching data:', err);
+    }
+  }
+    fetchData();
+    console.log(data)
   }, []);
+  
+const handleSearch = (searchTerm) => {
+  const filtered = data.filter((item) =>
+  item.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
+setFilteredData(filtered);
+};
 
   return (
     <Container>
       <Welcome />
-      <Cards bookData={products} />
+      <Searchbar handleSearch={handleSearch}/>
+      <AllTheBooks bookData={filteredData} />
     </Container>
   );
 };
