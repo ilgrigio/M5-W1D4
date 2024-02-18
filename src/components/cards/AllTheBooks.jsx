@@ -15,7 +15,7 @@ const AllTheBooks = ({ bookData }) => {
               title={book.title}
               category={book.category}
               price={book.price}
-              />
+            />
           </Col>
         ))}
       </Row>

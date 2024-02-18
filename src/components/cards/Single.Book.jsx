@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Card from "react-bootstrap/Card";
 import styles from "./SingleBook.module.css";
+import CommentArea from "../modal/CommentArea";
 
 const SingleBook = ({ asin, img, title, category, price }) => {
   const [selected, setSelected] = useState(false);
@@ -19,6 +20,7 @@ const SingleBook = ({ asin, img, title, category, price }) => {
         <Card.Title>{title}</Card.Title>
         <Card.Subtitle>{category}</Card.Subtitle>
         <Card.Text>€ {price.toFixed(2)}</Card.Text>
+        <CommentArea />
       </Card.Body>
     </Card>
   );
