@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
+import FetchPost from "../fetch/FetchPost";
 
 const ModalForm = () => {
   const [formData, setFormData] = useState({
@@ -16,20 +17,23 @@ const ModalForm = () => {
   return (
     <>
       <div className="d-flex flex-column gap-3">
-        <input value="" type="text" name="elementId" placeholder="elementId" />
+        <input value={formData.elementId} 
+               type="text" 
+               name="elementId" 
+               placeholder="elementId" />
         <input
           onChange={onChangeInput}
-          name="rate"
+          name={formData.rate}
           type="number"
           placeholder="rate"
         />
         <input
           onChange={onChangeInput}
-          name="comment"
+          name={formData.comment}
           type="text"
           placeholder="comment"
         />
-        <Button onClick={fetchPost(setFormData)}>Add Comment</Button>
+        <Button onClick={FetchPost(formData)}>Add Comment</Button>
       </div>
     </>
   );

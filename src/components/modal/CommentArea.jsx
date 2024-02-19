@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import ModalBody from "./ModalBody";
+import ModalForm from "./ModalBody";
 import { useState } from "react";
 
 function CommentArea() {
@@ -17,16 +17,16 @@ function CommentArea() {
     <>
       {values.map((v, idx) => (
         <Button key={idx} className="me-2 mb-2" onClick={() => handleShow(v)}>
-          Full screen
+          Add comment
           {typeof v === "string" && `below ${v.split("-")[0]}`}
         </Button>
       ))}
       <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal</Modal.Title>
+          <Modal.Title>Comment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ModalBody />
+          <ModalForm />
         </Modal.Body>
       </Modal>
     </>

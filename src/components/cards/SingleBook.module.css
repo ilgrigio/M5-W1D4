@@ -1,6 +1,12 @@
 .card {
   border: none !important;
   padding-inline: 10px;
+  height: 500px !important;
+}
+
+.card img {
+  object-fit: cover;
+  aspect-ratio: 10 / 16;
 }
 
 .card:hover {

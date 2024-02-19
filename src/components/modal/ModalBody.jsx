@@ -1,5 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import ModalForm from "./ModalForm";
+import FetchGet from "../fetch/FetchGet";
 
 function ModalBody() {
   return (
@@ -7,7 +8,7 @@ function ModalBody() {
       <Container className="m-0">
         <Row>
           <Col className="w-25 flex-column">
-            <ul></ul>
+            <FetchGet userComment={showComment} />
           </Col>
           <Col className="w-75 gap-3">
             <ModalForm />
