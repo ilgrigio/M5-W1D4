@@ -1,14 +1,16 @@
 import { Container, Row, Col } from "react-bootstrap";
 import ModalForm from "./ModalForm";
 import FetchGet from "../fetch/FetchGet";
+import { useState } from "react";
 
 function ModalBody() {
+const [showComment, setShowComment] = useState([])
   return (
     <>
       <Container className="m-0">
         <Row>
           <Col className="w-25 flex-column">
-            <FetchGet userComment={showComment} />
+            <FetchGet userComment={setShowComment} />
           </Col>
           <Col className="w-75 gap-3">
             <ModalForm />
