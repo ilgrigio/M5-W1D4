@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import FetchPost from "../fetch/FetchPost";
 
-const ModalForm = () => {
+const ModalForm = (bookId) => {
+  console.log(bookId);
   const [formData, setFormData] = useState({
-    elementId: "",
+    elementId: bookId,
     rate: 0,
     comment: "",
   });
+
+  useEffect(() => {
+    setFormData((prevData) => ({ ...prevData, elementId: bookId }));
+  }, [bookId]);
+
   console.log(formData);
   const onChangeInput = (ev) => {
     const { name, value } = ev.target;
@@ -17,10 +23,12 @@ const ModalForm = () => {
   return (
     <>
       <div className="d-flex flex-column gap-3">
-        <input value={formData.elementId} 
-               type="text" 
-               name="elementId" 
-               placeholder="elementId" />
+        <input
+          value={formData.elementId.bookId}
+          type="text"
+          name="elementId"
+          placeholder="elementId"
+        />
         <input
           onChange={onChangeInput}
           name={formData.rate}
@@ -33,7 +41,7 @@ const ModalForm = () => {
           type="text"
           placeholder="comment"
         />
-        <Button onClick={FetchPost(formData)}>Add Comment</Button>
+        <Button onClick={() => FetchPost(formData)}>Add Comment</Button>
       </div>
     </>
   );

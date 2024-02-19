@@ -3,7 +3,8 @@ import Modal from "react-bootstrap/Modal";
 import ModalForm from "./ModalBody";
 import { useState } from "react";
 
-function CommentArea() {
+function CommentArea(bookId) {
+  // console.log(bookId);
   const values = [true];
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
@@ -26,7 +27,7 @@ function CommentArea() {
           <Modal.Title>Comment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ModalForm />
+          <ModalForm bookId={bookId.bookId} />
         </Modal.Body>
       </Modal>
     </>

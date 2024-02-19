@@ -1,7 +1,7 @@
 .card {
   border: none !important;
   padding-inline: 10px;
-  height: 500px !important;
+  object-fit: cover;
 }
 
 .card img {
