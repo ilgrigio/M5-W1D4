@@ -1,15 +1,13 @@
 import React from "react";
-
-// import { Container } from "react-bootstrap";
 import MyNav from "./components/navbar/MyNav";
 import MyFooter from "./components/footer/MyFooter";
-import Main from "./components/main/Main";
+import AllTheBooks from "./components/cards/AllTheBooks";
 
 const App = () => {
   return (
     <>
       <MyNav />
-      <Main />
+      <AllTheBooks />
       <MyFooter />
     </>
   );
