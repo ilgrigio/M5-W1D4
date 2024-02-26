@@ -4,30 +4,28 @@ import axios from "axios";
 
 const AddComment = ({ asin }) => {
   const [comment, setComment] = useState({
-    elementId: null,
-    rate: 1,
+    elementId: asin,
+    rate: 0,
     comment: "",
   });
 
   useEffect(() => {
-    setComment(prevComment => ({ ...prevComment, elementId: asin }));
+    setComment((prevComment) => ({ ...prevComment, elementId: asin }));
   }, [asin]);
 
-  const sendComment = async e => {
+  const sendComment = async (e) => {
     e.preventDefault();
     try {
       let response = await axios.post(
         "https://striveschool-api.herokuapp.com/api/comments/",
-        {
-          text: comment,
-        },
+        comment,
+
         {
           headers: {
             "Content-type": "application/json",
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWRhMGQyNmQwMDFmMzAwMTk2YWM5NzkiLCJpYXQiOjE3MDg3ODkwMzAsImV4cCI6MTcwOTk5ODYzMH0.CPuSb74ofvTVMHzBMgmJVarrTAdiPf_5HJfCHwHI2Go",
           },
-          body: JSON.stringify(comment),
         }
       );
       if (response.ok) {
@@ -47,17 +45,17 @@ const AddComment = ({ asin }) => {
 
   return (
     <div className="d-flex flex-column gap-3">
-      <input
+      {/* <input
         value={comment.elementId}
         type="text"
         name="elementId"
         placeholder="elementId"
-      />
+      /> */}
       <input
-        onChange={e =>
+        onChange={(e) =>
           setComment({
             ...comment,
-            comment: e.target.value,
+            rate: Number(e.target.value),
           })
         }
         name={comment.rate}
@@ -67,7 +65,7 @@ const AddComment = ({ asin }) => {
         placeholder="rate"
       />
       <input
-        onChange={e =>
+        onChange={(e) =>
           setComment({
             ...comment,
             comment: e.target.value,

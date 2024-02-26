@@ -35,14 +35,14 @@ const AllTheBooks = () => {
               type="search"
               placeholder="Search a book"
               value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </Form.Group>
         </Col>
       </Row>
       <Row className="g-2 mt-3">
         {products
-          .filter(b => b.title.toLowerCase().includes(searchQuery))
+          .filter((b) => b.title.toLowerCase().includes(searchQuery))
           .map((book, idx) => {
             return (
               <Col key={idx}>
