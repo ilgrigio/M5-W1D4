@@ -4,15 +4,14 @@ body {
 
 .card {
   border: none !important;
-  /* object-fit: cover; */
   background-color: #212529 !important;
   color: whitesmoke !important;
 }
 
 .truncateText {
-  white-space: nowrap; /* Impedisce il testo di andare a capo */
-  overflow: hidden; /* Nasconde il testo oltre i limiti del contenitore */
-  text-overflow: ellipsis; /* Aggiunge i tre puntini alla fine del testo troncato */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card img {

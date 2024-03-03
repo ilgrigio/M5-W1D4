@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Mainlayout from "../layouts/Mainlayout";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Card } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 import "./Bookdetails.css";
 
 const Bookdetails = () => {
@@ -33,8 +33,8 @@ const Bookdetails = () => {
   }, [id]);
 
   return (
-    <>
-      <Mainlayout>
+    <Mainlayout>
+      <Container className="d-flex justify-content-center">
         <Card
           className="bg-dark text-white m-4"
           style={{ width: "20rem", height: "40rem" }}
@@ -52,8 +52,8 @@ const Bookdetails = () => {
             </Card.Text>
           </Card.Body>
         </Card>
-      </Mainlayout>
-    </>
+      </Container>
+    </Mainlayout>
   );
 };
 
