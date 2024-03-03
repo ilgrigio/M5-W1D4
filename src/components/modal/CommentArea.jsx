@@ -7,6 +7,7 @@ import AddComment from "./AddComment";
 import CommentList from "./CommentList";
 import axios from "axios";
 import { Col, Row } from "react-bootstrap";
+import "./Modal.css";
 
 const CommentArea = ({ asin }) => {
   // Bootstrap
@@ -69,6 +70,7 @@ const CommentArea = ({ asin }) => {
           </Button>
         ))}
         <Modal
+          className="bg-dark"
           show={show}
           fullscreen={fullscreen}
           onHide={() => setShow(false)}
