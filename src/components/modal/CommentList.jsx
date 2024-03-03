@@ -7,7 +7,7 @@ const CommentList = ({ commentsToShow, setComments }) => {
     <Row>
       <Col className="w-75">
         <ListGroup style={{ color: "black" }} className="mt-2">
-          {commentsToShow.map(comment => (
+          {commentsToShow.map((comment) => (
             <SingleComment
               setComments={setComments}
               comment={comment}

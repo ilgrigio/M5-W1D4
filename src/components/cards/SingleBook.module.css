@@ -1,12 +1,24 @@
+body {
+  background-color: rgb(219, 219, 219) !important;
+}
+
 .card {
   border: none !important;
-  padding-inline: 10px;
-  object-fit: cover;
+  /* object-fit: cover; */
+  background-color: #212529 !important;
+  color: whitesmoke !important;
+}
+
+.truncateText {
+  white-space: nowrap; /* Impedisce il testo di andare a capo */
+  overflow: hidden; /* Nasconde il testo oltre i limiti del contenitore */
+  text-overflow: ellipsis; /* Aggiunge i tre puntini alla fine del testo troncato */
 }
 
 .card img {
   object-fit: cover;
-  aspect-ratio: 10 / 16;
+  width: inherit;
+  min-height: 24rem;
 }
 
 .card:hover {

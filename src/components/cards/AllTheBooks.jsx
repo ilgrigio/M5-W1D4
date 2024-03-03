@@ -1,4 +1,3 @@
-// import bookData from "../../history.json";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import SingleBook from "./SingleBook";
 import { useState, useEffect } from "react";
@@ -10,7 +9,6 @@ const AllTheBooks = () => {
 
   // Endpoint
   const url = "https://striveschool-api.herokuapp.com/books";
-  // https://epibooks.onrender.com/
 
   const fetchData = async () => {
     try {
@@ -43,10 +41,10 @@ const AllTheBooks = () => {
       <Row className="g-2 mt-3">
         {products
           .filter((b) => b.title.toLowerCase().includes(searchQuery))
-          .map((book, idx) => {
+          .map((book, asin) => {
             return (
-              <Col key={idx}>
-                <SingleBook book={book} />
+              <Col key={asin}>
+                <SingleBook book={book} id={asin} />
               </Col>
             );
           })}

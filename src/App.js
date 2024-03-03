@@ -5,6 +5,7 @@ import Errorpage from "./pages/Errorpage";
 import Loginpage from "./pages/Loginpage";
 import ProtectedRoutes from "./middleware/ProtectedRoutes";
 import Contact from "./pages/Contact";
+import Bookdetails from "./pages/Bookdetails";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/home" element={<Homepage />} />
           <Route path="/contact" element={<Contact />} />
         </Route>
+        <Route path="/details/:id" element={<Bookdetails />} />
         <Route path="*" element={<Errorpage />} />
       </Routes>
     </BrowserRouter>

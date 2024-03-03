@@ -18,45 +18,45 @@ const CommentArea = ({ asin }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  console.log(comments);
+
   function handleShow(breakpoint) {
     setFullscreen(breakpoint);
     setShow(true);
   }
 
-  useEffect(() => {
-    const getComments = async () => {
-      setIsLoading(true);
-      try {
-        let response = await axios.get(
-          "https://striveschool-api.herokuapp.com/api/comments/" + asin,
-          {
-            headers: {
-              "Content-type": "application/json",
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWRhMGQyNmQwMDFmMzAwMTk2YWM5NzkiLCJpYXQiOjE3MDg3ODkwMzAsImV4cCI6MTcwOTk5ODYzMH0.CPuSb74ofvTVMHzBMgmJVarrTAdiPf_5HJfCHwHI2Go",
-            },
-          }
-        );
-        console.log(response);
-        if (response.status === 200) {
-          let commentsData = await response.data;
-          setComments(commentsData);
-          setIsLoading(false);
-          setIsError(false);
-        } else {
-          console.log("error");
-          setIsLoading(false);
-          setIsError(true);
+  const getComments = async () => {
+    setIsLoading(true);
+    try {
+      let response = await axios.get(
+        "https://striveschool-api.herokuapp.com/api/comments/" + asin,
+        {
+          headers: {
+            "Content-type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWRhMGQyNmQwMDFmMzAwMTk2YWM5NzkiLCJpYXQiOjE3MDg3ODkwMzAsImV4cCI6MTcwOTk5ODYzMH0.CPuSb74ofvTVMHzBMgmJVarrTAdiPf_5HJfCHwHI2Go",
+          },
         }
-      } catch (error) {
-        console.log(error);
+      );
+      if (response.status === 200) {
+        let commentsData = await response.data;
+        setComments(commentsData);
+        setIsLoading(false);
+        setIsError(false);
+      } else {
+        console.log("error");
         setIsLoading(false);
         setIsError(true);
       }
-    };
-    // if (asin) {
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+      setIsError(true);
+    }
+  };
+  useEffect(() => {
     getComments();
-    // }
+    // return ()=> {}
   }, [asin]);
 
   return (
