@@ -2,6 +2,8 @@ import { Container, Row, Col, Form } from "react-bootstrap";
 import SingleBook from "./SingleBook";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./SingleBook.module.css";
+import styles from "./SingleBook.module.css";
 
 const AllTheBooks = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -25,7 +27,8 @@ const AllTheBooks = () => {
   }, []);
 
   return (
-    <Container className="mt-3">
+    <Container className="mt-3 text-center">
+      <div className={styles.scroll}></div>
       <Row xs={1} md={4} className="g-4">
         <Col>
           <Form.Group>
@@ -33,14 +36,14 @@ const AllTheBooks = () => {
               type="search"
               placeholder="Search a book"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={e => setSearchQuery(e.target.value)}
             />
           </Form.Group>
         </Col>
       </Row>
       <Row className="g-2 mt-3">
         {products
-          .filter((b) => b.title.toLowerCase().includes(searchQuery))
+          .filter(b => b.title.toLowerCase().includes(searchQuery))
           .map((book, asin) => {
             return (
               <Col key={asin}>
